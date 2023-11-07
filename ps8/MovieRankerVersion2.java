@@ -13,7 +13,7 @@ public class MovieRankerVersion2{
 
 	public static void main(String[] args) {
 		long startTime = System.currentTimeMillis();
-		File file = new File("C:/NJIT/Fall 23/PS8/ratings.tsv");
+		File file = new File("D:/Java/PS8/ratings.tsv");
 		MaxHeap<MovieRating> temp = new MaxHeap<>();
 
 		//ArrayList<MovieRating> rl = new ArrayList<MovieRating>();

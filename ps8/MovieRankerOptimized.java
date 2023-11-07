@@ -10,7 +10,7 @@ public class MovieRankerOptimized {
 
 	public static void main(String[] args) {
 		long startTime = System.currentTimeMillis();
-		File file = new File("C:/NJIT/Fall 23/PS8/ratings.tsv");
+		File file = new File("D:/Java/PS8/ratings.tsv");
 
 		MaxHeap<MovieRating> movies = new MaxHeap<>();
 		
@@ -66,7 +66,8 @@ public class MovieRankerOptimized {
 
 			
 		while(0 < numRecords && !temp.isEmpty()){
-			System.out.println(processList(minVotes, numRecords, movies).removeMax());
+			System.out.println(temp.removeMax());
+			numRecords--;
 		}
 
 
@@ -83,12 +84,30 @@ public class MovieRankerOptimized {
 		while(pos < movies.heapsize()){
 			MovieRating mr = findMovie(minVotes,pos, movies);
 			if(mr != null){
+				if(pos < numRecords){
+				}
+				// else{
+					// 	for(MovieRating var : temp.returnHeap()){
+						// 		if(var.getRating() > mr.getRating()){
+							// 			if(temp.get(temp.heapsize()-2).getRating() > temp.get(temp.heapsize()-1).getRating()){
+								// 				temp.remove(temp.heapsize()-1);
+								// 			}
+								// 			else{
+									// 				temp.remove(temp.heapsize()-2);
+									// 			}
+									// E			temp.insert(var);
+				// 		}
+				// 	}
+				// }
+				
+				
 				temp.insert(mr);
-				//System.out.println(temp.returnHeap().toString());
+	
 			}
 			pos++;
 		}
 
+		//System.out.println(temp.returnHeap().toString());
 		return temp;
 	} 
 
