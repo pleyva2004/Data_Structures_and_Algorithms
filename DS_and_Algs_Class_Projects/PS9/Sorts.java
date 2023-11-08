@@ -5,44 +5,12 @@ import java.util.Random;
 import java.util.PriorityQueue;
 
 /*
- * Implementations of various sorting algorithms.
+ * Implementations of various sorting algorithms we have covered.
  */
 
-public class MysterySorts {
-
-  
-   <E extends Comparable<E>> void sort(int i, E[] A) {
-    switch(i) {
-      case 0:
-        //System.out.println("select");
-        selectsort(A);
-	break;
-      case 1:
-        //System.out.println("insertion");
-        inssort(A);
-	break;
-      case 2:
-        //System.out.println("heap");
-        heapsort(A);
-	break;
-      case 3:
-        //System.out.println("quick");
-        quicksort(A);
-	break;
-      default:
-	System.exit(7);
-	break;
-    }
-  }
-
-  
-   <E extends Comparable<E>> void sort5(E[] A) {
-    E[] temp = A.clone();
-    mergesort(A, temp, 0, A.length-1);
-  }
+public class Sorts {
 
    <E extends Comparable<E>> void selectsort(E[] A) {
-    //System.out.println("selectsort");
     for (int i = 0; i < A.length - 1; i++) { // Select i'th record
       int lowindex = i; // Remember its index
       for (int j = A.length - 1; j > i; j--)
@@ -53,6 +21,8 @@ public class MysterySorts {
     }
   }
 
+   /* Hybrid quicksort; halts recursion when array is small.
+    */
    <E extends Comparable<E>> void hqsort(E[] A, int i, int j) { // Quicksort
     if (j - i < 10)
       return;
@@ -72,7 +42,6 @@ public class MysterySorts {
   }
 
    <E extends Comparable<E>> void qsort(E[] A, int i, int j) { // Quicksort
-    //System.out.println("qsort");
     int pivotindex = findpivot(A, i, j); // Pick a pivot
     swap(A, pivotindex, j); // Stick pivot at end
     // k will be the first position in the right subarray
@@ -126,7 +95,6 @@ public class MysterySorts {
   }
 
    <E extends Comparable<E>> void inssort(E[] A) {
-    //System.out.println("inssort");
     for (int i = 1; i < A.length; i++)
       // Insert i'th record
       for (int j = i; (j > 0) && (A[j].compareTo(A[j - 1]) < 0); j--)
@@ -139,7 +107,6 @@ public class MysterySorts {
    <E extends Comparable<E>> void heapsort(E[] A) {
     // The heap constructor invokes the buildheap method
     
-    //System.out.println("heapsort");
     
    // MaxHeap<E> H = new MaxHeap<E>(A);
     PriorityQueue<E> pq = new PriorityQueue<E>(A.length);
@@ -147,8 +114,7 @@ public class MysterySorts {
       pq.add(A[i]);
     for (int i = 0; i < A.length; i++)
       // Now sort
-      A[A.length - i - 1] = pq.poll(); // Removemax places max at end
-    // of heap
+      A[A.length - i - 1] = pq.poll(); // Removemax (Java calls it poll.
   }
 
   private static <E extends Comparable<E>> void swap(E[] A, int i, int j) {
