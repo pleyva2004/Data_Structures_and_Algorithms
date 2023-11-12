@@ -1,13 +1,17 @@
-import java.lang.Arrays;
+import java.util.Arrays;
 
-public class ModifiedMergeSort {
+public class ModifiedMergeSort{
       public static void main(String[] args){
-            int[] nums = {3,7,6,5,4,2,1,4,3,4,5,7,9,5,7,6};
-
+            Integer[] nums = {3,7,6,5,4,2,4,5,6,3,4,2,5,8,5};
+            
+            System.out.println(Arrays.toString(nums));
+            //printArray(nums);
+            
             int n = nums.length;
-            int k = 4;
+            int k = 3;
             int blocksize = n/k;
-
+            Integer[] temp = new Integer[n];
+            
             int start, end;
 
             int i = 0;
@@ -17,12 +21,71 @@ public class ModifiedMergeSort {
                         end = n;
                   else
                         end = i + blocksize;
-                  
+                        mergesort(nums,temp, start, end-1);
+                        
+
                   i += blocksize;
                   k--;
+
             }
+            
+            //mergesort(nums,temp, 0, n-1);
+
+           System.out.println(Arrays.toString(nums));
+            
 
 
       }
 
+    public static <E extends  Comparable<E>> void mergesort(E[] A, E[] temp, int l, int r) {
+           
+      
+      
+      
+      
+      
+      
+            int mid = (l + r) / 2; // Select midpoint
+            if (l == r)
+            return; // List has one element
+            mergesort(A, temp, l, mid); // sort first half
+            mergesort(A, temp, mid + 1, r); // sort second half
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            for (int i = l; i <= r; i++)
+            // Copy subarray to temp
+            temp[i] = A[i];
+
+            int i1 = l;
+            int i2 = mid + 1;
+            for (int curr = l; curr <= r; curr++) {
+            if (i1 == mid + 1) // Left sublist exhausted
+                  A[curr] = temp[i2++];
+            else if (i2 > r) // Right sublist exhausted
+                  A[curr] = temp[i1++];
+            else if (temp[i1].compareTo(temp[i2]) < 0)//Get small
+                  A[curr] = temp[i1++];   
+            else
+                  A[curr] = temp[i2++];
+            }
+    }
+
+  
+       
 }
+
+
+
+
+
