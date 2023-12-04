@@ -72,7 +72,7 @@ public class StudyPlan {
           System.out.println(courses.get(i) + ": dist: " + graph.getMark(i));
 */
 
-        topSort(graph);
+        BFS(graph,0);
         while (!sequence.isEmpty())
             System.out.println(sequence.pop());
     }
