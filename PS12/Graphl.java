@@ -3,22 +3,22 @@ import java.util.Iterator;
 
 /** Adjacency list graph implementation */
 class Graphl implements Graph {
-	private ArrayList[] vertex; // The vertex list
+	private ArrayList<ArrayList> vertex; // The vertex list
 	private int numEdge; // Number of edges
 	public int[] Mark; // The mark array
 	public Iterator[] it;
 
 	public Graphl(int n) // Constructor
 	{
+		vertex = new ArrayList();
 		Init(n);
 	}
 
 	public void Init(int n) {
 		Mark = new int[n];
 		it = new Iterator[n];
-		vertex = new ArrayList[n];
 		for (int i = 0; i < n; i++)
-			vertex[i] = new ArrayList();
+			vertex.add(new ArrayList());
 		numEdge = 0;
 	}
 
@@ -33,10 +33,10 @@ class Graphl implements Graph {
 	/** @return v's first neighbor */
 	public int first(int v) {
 
-		if (vertex[v].size() == 0)
+		if (vertex.get(v).size() == 0)
 			return Mark.length; // No neighbor
 		else {
-			it[v] = vertex[v].iterator();
+			it[v] = vertex.get(v).iterator();
 			int w = (int) it[v].next();
 			return w;
 		}
@@ -51,21 +51,21 @@ class Graphl implements Graph {
 	}
 
 	public void setEdge(int i, int j, int weight) {
-		vertex[i].add(j);
+		vertex.get(i).add(j);
 		++numEdge;
 	}
 
 	/** Delete an edge */
 	public void delEdge(int i, int j) {
 		if (isEdge(i, j)) {
-			vertex[i].remove(j);
+			vertex.get(i).remove(j);
 			numEdge--;
 		}
 	}
 
 	/** Determine if an edge is in the graph */
 	public boolean isEdge(int v, int w) {
-                boolean b = vertex[v].contains(w);
+                boolean b = vertex.get(v).contains(w);
                 //if(b) System.out.println("Contained edge.");
                 return b;
 	}
@@ -86,7 +86,7 @@ class Graphl implements Graph {
 
 	/** @return iterable object for neighbors */
 	public Iterable<Integer> neighbors(int v) {
-		return vertex[v];
+		return vertex.get(v);
 	}
 
 

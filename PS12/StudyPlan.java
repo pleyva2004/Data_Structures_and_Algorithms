@@ -136,4 +136,5 @@ public class StudyPlan {
         System.out.println("leaving vertex " + courses.get(v));
         sequence.push(courses.get(v));
     }
+
 }

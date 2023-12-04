@@ -3,47 +3,46 @@ import java.io.*;
 
 public class Distance {
     public static void main(String[] args) {        
-        ArrayList<Integer> from = new ArrayList<>();
-        ArrayList<Integer> to = new ArrayList<>();
         
-        int n = 739454;
-        int current = 0;
+        int n = 1000000;
+       
         
         Graphl graph = new Graphl(n);
         
-        File file = new File("D:/Git/Data_Structures_and_Algorithms/PS12/testing.txt");
+        File file = new File("C:/Git/Data_Structures_and_Algorithms/PS12/web.txt");
         try {
             Scanner scan = new Scanner(file);
             while (scan.hasNextInt()) {
                 int src = scan.nextInt();
+
                 int dst = scan.nextInt();
     
-                if(from.size() == 0){  
+                // if(from.size() == 0){  
                    
-                    from.add(src);
-                    to.add(dst);
-                    graph.Mark[current] = src;
-                    graph.setEdge(current, dst, 1);
-                    //continue;
-                }
-                else if(src == from.get(from.size()-1)){
+                //     from.add(src);
+                //     to.add(dst);
+                //     graph.Mark[current] = src;
+                //     graph.setEdge(current, dst, 1);
+                //     //continue;
+                // }
+                // else if(src == from.get(from.size()-1)){
                     
-                    from.add(src);
-                    to.add(dst);
-                    graph.setEdge(current, dst, 1);
-                }
-                else{
-                    ++current;
-                    from.add(src);
-                    to.add(dst);
-                    graph.setEdge(current, dst, 1);
-                    graph.Mark[current] = src;
+                //     from.add(src);
+                //     to.add(dst);
+                //     graph.setEdge(current, dst, 1);
+                // }
+                // else{
+                //     ++current;
+                //     from.add(src);
+                //     to.add(dst);
+                //     graph.setEdge(current, dst, 1);
+                //     graph.Mark[current] = src;
                     
-                }
+                //}
+                //if(src == 29387)
+                   // System.out.println("here");
+                graph.setEdge(src, dst, 1);
 
-                
-                
-                
                 
             }
             scan.close();
@@ -55,52 +54,28 @@ public class Distance {
         //System.out.println(Arrays.toString(graph.Mark));
 
         Scanner robo = new Scanner(System.in);
-            int fromInput = robo.nextInt();
-            int toInput = robo.nextInt();
 
             
-            while(fromInput >= 0){
-                int distance = 0;
-                int fromIndex = getIndex(graph, n, fromInput);
+            while(true){
+                int fromInput = robo.nextInt();
+                int toInput = robo.nextInt();
+                if(fromInput == -1 || toInput == -1 )
+                    break;
 
+                int distance = BFS(graph, fromInput, toInput);
 
-                Iterable<Integer> neighbors = new ArrayList<>();
-                neighbors = graph.neighbors(fromIndex);
-                //System.out.println(graph.neighbors(fromIndex));
                 
                 
-                
-                for(Integer neighbor: neighbors){
+                if (distance >= 0)
+                    System.out.println("distance " + distance);
+                else
+                    System.out.println(toInput + " is unreachable from " + fromInput);   
 
-
-                    fromIndex = getIndex(graph, n, neighbor);
-                    System.out.println(graph.neighbors(fromIndex));
-                }
-
-
-
-                fromInput = robo.nextInt();
-        //     boolean path = graph.isEdge(fromIndex, toInput);
-
-            
-            //BFS(graph, fromIndex);
-
-
-            // if (graph.isEdge(fromIndex, toInput)){
-            //     System.out.println("distance " + String.valueOf(distance));
-            //     fromInput = robo.nextInt(); 
-            //     toInput = robo.nextInt();        
-            // }
-            // else
-            //     System.out.println(String.valueOf(toInput) + " is unreachable from " + fromInput);
-            //     fromInput = robo.nextInt();
-            //     toInput = robo.nextInt();
-               
-                
+            }   
         }
         
-        robo.close();
-    }
+      
+    
 
     static int getIndex(Graphl graph, int n, int fromInput){
         int fromIndex = 0;
@@ -115,46 +90,56 @@ public class Distance {
         
     }
 
-    static int BFS(Graph G, int s){
-        ArrayList<Integer> visited = new ArrayList<>();
-        visited.add(s);
-        int d = 0;
+    static int BFS(Graphl graph, int s, int target){
+        // initalize visited, queue arrays
+        // 
 
+        ArrayList<Integer> visited = new ArrayList<>();
+
+        
+        int d = 0;
+        
         Queue<Integer> Q = new ArrayDeque<>();
         Q.add(s);
 
+        Iterable<Integer> neighbors = new ArrayList<>();
+        
+
         while(!Q.isEmpty()){
-            d++;
-            int v = Q.poll();
-
-            for (int w = G.first(v); w < G.n(); w = G.next(v, w))
-                if (G.getMark(w) == 0) { // Put neighbors on Q
-                    G.setMark(w, G.getMark(v) + 1);
-                    Q.add(w);
-                    visited.add(w);
+            int num = Q.size();
+            
+            //System.out.println("num: " + num);
+            while(num > 0){
+                num--;
+                //System.out.println("Q size: " + Q.size());
+                int v = Q.poll();
+                
+                if (visited.contains(v)){
+                    continue;    
                 }
+                if(v == target){
+                    return d;
+                }
+                
+                visited.add(v);
+                
+                
+                //int indexOfV = getIndex(graph, graph.n(), v);
+               // graph.setEdge(v, 10, 1);
+                neighbors = graph.neighbors(v);
+                //System.out.println(neighbors);
+                
+                // put each neighbor into queue 
+                for(Integer neighbor: neighbors){
+                    Q.add(neighbor);
+                }
+                
+            } 
 
+            d++;
         }
 
-        System.out.println(visited);
-        return d;
-    }
-
-
-
-
-    // static int BFS(int d; inttoInputgoal){
-
-    //     if(current = goal)
-    //         return
-    //     else if(d = -1)
-    //         return -1
-    //     else if(current.hasNeighbors)
-    //         BFS(d++; nextNeightbor, goal)
-        
-    //     //be called oon every child until   
-
-    // }
-
-
+        //System.out.println(visited);
+        return -1;
+    }    
 }
