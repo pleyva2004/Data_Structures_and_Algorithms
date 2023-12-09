@@ -4,16 +4,14 @@
 
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.Arrays;
-
 
 public class RandomGraph {
 
 public static void main(String[] args) {
 
-    int n = 30; // number of vertices
-    double p = 0.08;  // probability that an edge is present
-    long seed = 971; // pseudo-random number generator seed
+    int n = 5; // number of vertices
+    double p = 0.3;  // probability that an edge is present
+    long seed = 123; // pseudo-random number generator seed
     Random rng = new Random(seed);
     Graphm graph = new Graphm(n);  // use the adjacency matrix implementation
  
@@ -41,33 +39,13 @@ public static void main(String[] args) {
         System.out.println();
     }
 
-
+    //solution for first part
     partOne(graph);
 
-    String[][] distances = new String[n][n];
 
 
-    for(int i = 0; i < n; i++){
-      resest(graph);
-      //System.out.println(Arrays.toString(graph.Mark));
-
-      BFS(graph, i);
-      //System.out.println(Arrays.toString(graph.Mark));
-      for(int j = 0; j < n; j ++){
-          if(graph.Mark[j] == 0)
-            distances[i][j] = "x";
-          else
-            distances[i][j] = String.valueOf(graph.Mark[j] - 1);
-      }
-    }
-
-    for(String[] row : distances){
-      for(String col: row){
-        System.out.print(col+ " ");
-      }
-      System.out.println();
-    }
-
+    //solution to second part
+    partTwo(graph, n);
 
 
     
@@ -112,6 +90,14 @@ public static void main(String[] args) {
     //System.out.println("");
   }
 
+//resets the marked array
+  static void reset(Graphm graph){
+    for(int i = 0; i < graph.n(); i ++){
+      graph.Mark[i] = 0;
+    }
+  }
+
+  //solution to first part
   static void partOne(Graphm graph){
     BFS(graph, 0);
 
@@ -129,9 +115,31 @@ public static void main(String[] args) {
 
   }
 
-  static void resest(Graphm graph){
-    for(int i = 0; i < graph.n(); i ++){
-      graph.Mark[i] = 0;
+
+  //solution for second part
+  static void partTwo(Graphm graph, int n){
+    String[][] distances = new String[n][n];
+
+  
+    for(int i = 0; i < n; i++){
+      reset(graph);
+      //System.out.println(Arrays.toString(graph.Mark));
+
+      BFS(graph, i);
+      //System.out.println(Arrays.toString(graph.Mark));
+      for(int j = 0; j < n; j ++){
+          if(graph.Mark[j] == 0)
+            distances[i][j] = "x";
+          else
+            distances[i][j] = String.valueOf(graph.Mark[j] - 1);
+      }
+    }
+
+    for(String[] row : distances){
+      for(String col: row){
+        System.out.print(col+ " ");
+      }
+      System.out.println();
     }
   }
 }

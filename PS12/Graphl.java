@@ -3,14 +3,14 @@ import java.util.Iterator;
 
 /** Adjacency list graph implementation */
 class Graphl implements Graph {
-	private ArrayList<ArrayList> vertex; // The vertex list
+	private ArrayList<ArrayList<Integer>> vertex; // The vertex list
 	private int numEdge; // Number of edges
 	public int[] Mark; // The mark array
 	public Iterator[] it;
 
 	public Graphl(int n) // Constructor
 	{
-		vertex = new ArrayList();
+		vertex = new ArrayList<>();
 		Init(n);
 	}
 
@@ -18,7 +18,7 @@ class Graphl implements Graph {
 		Mark = new int[n];
 		it = new Iterator[n];
 		for (int i = 0; i < n; i++)
-			vertex.add(new ArrayList());
+			vertex.add(new ArrayList<>());
 		numEdge = 0;
 	}
 
