@@ -1,4 +1,3 @@
-# javaProjects
-This a collection of the Java projects I have completed. Please take a look.
+# CS114 Data Structures and Algorithms
+This a collection of the Java projects I completed for my Data Structures and Algorithms class.
 
-Tesing in visual studion code.
