@@ -9,7 +9,7 @@ public class Distance {
         
         Graphl graph = new Graphl(n);
         
-        File file = new File("web.txt");
+        File file = new File("C:\\Coding\\Repositories\\Data_Structures_and_Algorithms\\PS12\\web.txt");
         try {
             Scanner scan = new Scanner(file);
             while (scan.hasNextInt()) {

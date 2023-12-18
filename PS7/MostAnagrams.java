@@ -20,22 +20,11 @@ public class MostAnagrams {
 
     
     //read user input
-    File file = new File("C:/NJIT/Fall 23/PS7/words.txt");
+    File file = new File("C:\\Coding\\Repositories\\Data_Structures_and_Algorithms\\PS7\\words.txt");
     readFile(file, end);
     
     
         int num = 0;
-    
-        //debugging
-          //System.out.println("Starting num: " + num);
-          //System.out.println(wordList.toString() + "\n");
-    
-          // Comparator<WordPair> comparator = new Comparator<WordPair>() {
-          //   @Override
-          //   public int compare(WordPair w1, WordPair w2) {
-          //     return w1.getSorted().compareTo(w2.getSorted());
-          //   }
-          // };
 
 
     //Sort ArrayList
@@ -49,7 +38,7 @@ public class MostAnagrams {
     System.out.println("(2) find the length of the largest anagram in the file before the line number " + end);
     System.out.println("(3) find the set of the largest anagram in the file before the line number " + end);
     System.out.println("(4) find the largest set of anagrams in the file before the line number " + end);
-    System.out.println("(5) dictionary version" + end);
+    System.out.println("(5) dictionary version");
 
     System.out.print("Which program do you wanna run: ");
 

@@ -10,7 +10,7 @@ public class MovieRankerOptimized {
 
 	public static void main(String[] args) {
 		long startTime = System.currentTimeMillis();
-		File file = new File("D:/Java/PS8/ratings.tsv");
+		File file = new File("C:\\Coding\\Repositories\\Data_Structures_and_Algorithms\\PS8\\ratings.tsv");
 
 		MaxHeap<MovieRating> movies = new MaxHeap<>();
 		

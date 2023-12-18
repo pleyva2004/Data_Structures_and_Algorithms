@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class OALDictionary<Key extends Comparable, E> implements Dictionary<Key, E> {
+class OALDictionary<Key extends Comparable<Key>, E> implements Dictionary<Key, E> {
 	private static final int defaultSize = 10;
 	private ArrayList<KVpair<Key, E>> list;
 

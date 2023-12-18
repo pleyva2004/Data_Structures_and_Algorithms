@@ -6,7 +6,7 @@ public class test {
             heap.insert(new MovieRating("abc", 50, 1000));
             heap.insert(new MovieRating("abc", 50, 1000));
             
-            System.out.println(heap.returnHeap().get(5));
+            System.out.println(heap.returnHeap().get(2));
       
       }
 }

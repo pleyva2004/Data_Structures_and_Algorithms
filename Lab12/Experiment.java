@@ -44,14 +44,14 @@ public class Experiment {
             
             B_startTime = System.nanoTime();
             srts.editedQuicksort(B);
-           // int y = srts.deterministicSelect(B,0,A.length-1, n/2);
+           //int y = srts.deterministicSelect(B,0,A.length-1, n/2);
 
             B_avgTime += System.nanoTime()-B_startTime;
 
 
             
-            System.out.println("The "+(n/2)+" smallest value is "+q);
-            System.out.println("The "+(n/2)+" smallest value is "+y);
+            //System.out.println("The "+(n/2)+" smallest value is "+q);
+            //System.out.println("The "+(n/2)+" smallest value is "+y);
             //srts.heapsort(A);
             for(int i=0; i<n; ++i) System.out.print(A[i]+" ");
             System.out.println();

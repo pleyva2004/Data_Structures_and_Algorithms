@@ -5,7 +5,7 @@ public class Quantiles {
 
     static Random rnd = new Random();
     public static void main(String[] args){
-        File incomes = new File("D:\\Git\\Data_Structures_and_Algorithms\\PS11\\Incomes.txt");
+        File incomes = new File("C:\\Coding\\Repositories\\Data_Structures_and_Algorithms\\PS11\\Incomes.txt");
 
         ArrayList<Integer> incomeList = new ArrayList<>();
 

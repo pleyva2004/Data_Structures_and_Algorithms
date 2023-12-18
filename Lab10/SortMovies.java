@@ -7,7 +7,7 @@ public class SortMovies {
 
     public static void main(String[] args) {
         //File ratings = new File("Bmovies.tsv");
-        File ratings = new File("C:/Git/javaProjects/DS_and_Algs_Class_Projects/Lab10/movies.tsv");
+        File ratings = new File("C:/Coding/Repositories/Data_Structures_And_Algorithms/Lab10/movies.tsv");
         ArrayList<MovieRecord> mr = new ArrayList<MovieRecord>();
 
         int count = 0;

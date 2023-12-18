@@ -8,6 +8,7 @@ class Palindrome{
 		Scanner robo = new Scanner(System.in);
 		String myStr = robo.nextLine();
 		System.out.println(palindromeTest(myStr));
+		robo.close();
 		
 	}
 
@@ -28,6 +29,7 @@ class Palindrome{
 			return reverse(str, len-1);
 	
 	}
+
 
 
 }

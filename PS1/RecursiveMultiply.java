@@ -16,6 +16,8 @@ class RecursiveMultiply{
         
 		System.out.println(multi(a,b));
 
+		robo.close();
+
 	}
 
 	public static long multi(int a, int b){
