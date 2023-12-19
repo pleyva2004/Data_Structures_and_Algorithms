@@ -33,7 +33,7 @@ public class InsertPlusMinus {
                 return currentExpression;
             } else {
                 // Otherwise, return null
-                return "false";
+                return null;
             }
         }
 
